@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nile Horizon Transfers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      navy: { 950:'#050E22', 900:'#07122A', 800:'#0B1B3A', 700:'#122850', 600:'#1B3566' },
+      gold: { 300:'#EBD594', 400:'#E3C677', 500:'#C9A24A', 700:'#7A5F1C' },
+      mist: '#F1F4F9'
+    },
+    fontFamily: {
+      display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+      sans: ['Manrope', 'system-ui', 'sans-serif']
+    }
+  } }
+}
+</script>
+<style>
+/* Layout concept: one dark hero (headline left, white quote card right) over a pyramid-and-dunes horizon,
+   then alternating white / navy bands. Boldness sits in the hero typography and the horizon; the rest stays quiet.
+   Palette: navy-900 #07122A, navy-700 #122850, gold-500 #C9A24A, gold-400 #E3C677, white, mist #F1F4F9.
+   Type: Cormorant Garamond (display), Manrope (body and UI). */
+:root { --navy: #07122A; --navy-2: #122850; --gold: #C9A24A; --gold-light: #E3C677; --mist: #F1F4F9; --muted-dark: #B6C2DA; --muted-light: #46557A; }
+html { scroll-behavior: auto; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--navy); color: #fff; font-family: Manrope, system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 72rem; margin-inline: auto; }
+.font-display { font-family: "Cormorant Garamond", Georgia, serif; }
+.field { width: 100%; min-width: 0; height: 48px; border: 1px solid #D5DCEA; border-radius: 10px; padding: 0 14px; font: inherit; font-size: 16px; color: #0B1B3A; background: #fff; }
+.field:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.lbl { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #4A5B7F; margin-bottom: 6px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+.btn-wa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #07122A; font-weight: 700; border-radius: 12px; padding: 14px 22px; text-decoration: none; transition: filter .15s; }
+.btn-wa:hover { filter: brightness(1.06); }
+.btn-gold-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--gold); color: var(--gold-light); font-weight: 600; border-radius: 10px; padding: 10px 16px; text-decoration: none; font-size: 14px; }
+.btn-gold-outline:hover { background: rgba(201,162,74,.12); }
+details.faq { border-bottom: 1px solid #D5DCEA; }
+details.faq summary { list-style: none; cursor: pointer; padding: 18px 0; font-weight: 600; color: #0B1B3A; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after { content: "+"; font-size: 24px; line-height: 1; color: #7A5F1C; flex: none; }
+details.faq[open] summary::after { content: "\2212"; }
+details.faq p { margin: 0 0 18px; color: var(--muted-light); max-width: 60ch; }
+.wa-float { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 40; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+h1, h2, h3 { text-wrap: balance; }
+</style>
+
+<!-- HEADER -->
+<header class="gutter bg-navy-900">
+  <div class="wrap flex items-center justify-between gap-4 py-4">
+    <a href="#top" class="flex items-center gap-3 text-white no-underline min-w-0">
+      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" class="flex-none"><circle cx="18" cy="18" r="17" fill="#07122A" stroke="#C9A24A"/><polygon points="18,8 28,26 8,26" fill="#C9A24A"/><line x1="18" y1="8" x2="18" y2="26" stroke="#07122A" stroke-width="1.5"/></svg>
+      <span class="font-display text-xl sm:text-2xl font-semibold truncate" data-company>Nile Horizon Transfers</span>
+    </a>
+    <a data-wa="General inquiry" href="#" target="_blank" rel="noopener" class="btn-gold-outline flex-none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="relative overflow-hidden bg-gradient-to-b from-navy-900 via-navy-800 to-navy-700">
+  <svg class="absolute inset-x-0 bottom-0 w-full h-[55%] sm:h-[48%] pointer-events-none" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <circle cx="930" cy="96" r="66" fill="none" stroke="#C9A24A" stroke-opacity=".45"/>
+    <circle cx="930" cy="96" r="46" fill="#C9A24A" fill-opacity=".16"/>
+    <polygon points="610,300 790,118 970,300" fill="#0E2147" stroke="#C9A24A" stroke-opacity=".6"/>
+    <line x1="790" y1="118" x2="790" y2="300" stroke="#C9A24A" stroke-opacity=".25"/>
+    <polygon points="470,300 600,168 730,300" fill="#0B1B3A" stroke="#C9A24A" stroke-opacity=".5"/>
+    <polygon points="1000,300 1070,226 1140,300" fill="#0B1B3A" stroke="#C9A24A" stroke-opacity=".45"/>
+    <path d="M0 300 L0 248 Q220 212 470 246 T900 238 T1200 226 L1200 300Z" fill="#07122A"/>
+    <path d="M0 278 Q300 262 600 276 T1200 270" fill="none" stroke="#C9A24A" stroke-opacity=".35"/>
+  </svg>
+  <div class="gutter relative z-10">
+    <div class="wrap grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-14 items-start py-12 sm:py-16 lg:py-20">
+      <div class="min-w-0">
+        <p class="text-gold-400 text-sm font-semibold tracking-[.14em] uppercase m-0">Private transfers &amp; chauffeurs in Egypt</p>
+        <h1 class="font-display font-semibold text-white mt-4 mb-5" style="font-size:clamp(2.5rem,6.2vw,4.4rem);line-height:1.02">Safe, punctual private rides across Egypt at <span class="text-gold-400">one fixed price.</span></h1>
+        <p class="text-[#B6C2DA] text-lg max-w-[52ch] m-0">Airport pickups, Pyramids tours and full-day chauffeurs in Cairo, Giza, Luxor, Hurghada and Sharm El Sheikh. Clean air-conditioned cars, English-speaking drivers, and a price you agree before you travel.</p>
+        <ul class="mt-7 mb-0 p-0 list-none grid gap-3 text-white">
+          <li class="flex items-center gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C677" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-none" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Fixed prices in USD, no hidden fees</li>
+          <li class="flex items-center gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C677" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-none" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Free flight tracking and meet &amp; greet</li>
+          <li class="flex items-center gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C677" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-none" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>24/7 support on WhatsApp</li>
+        </ul>
+      </div>
+
+      <!-- BOOKING FORM -->
+      <form id="bookingForm" class="bg-white text-navy-800 rounded-2xl p-5 sm:p-7 shadow-2xl min-w-0" novalidate>
+        <h2 class="font-display text-3xl font-semibold m-0 text-navy-800">Get your quote</h2>
+        <p class="mt-1 mb-5 text-[#46557A] text-sm">Fill in your trip and send it straight to our WhatsApp. We reply with your fixed price.</p>
+        <div class="grid gap-4">
+          <div class="min-w-0">
+            <label class="lbl" for="pickup">Pickup location</label>
+            <input class="field" id="pickup" list="places" placeholder="e.g. Cairo Airport (CAI) Terminal 3" autocomplete="off">
+          </div>
+          <div class="min-w-0">
+            <label class="lbl" for="dropoff">Drop-off location</label>
+            <input class="field" id="dropoff" list="places" placeholder="e.g. Hotel near the Pyramids, Giza" autocomplete="off">
+          </div>
+          <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-4">
+            <div class="min-w-0"><label class="lbl" for="date">Date</label><input class="field" id="date" type="date"></div>
+            <div class="min-w-0"><label class="lbl" for="time">Pickup time</label><input class="field" id="time" type="time"></div>
+          </div>
+          <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-4">
+            <div class="min-w-0"><label class="lbl" for="vehicle">Vehicle type</label><select class="field" id="vehicle"></select></div>
+            <div class="min-w-0"><label class="lbl" for="pax">Passengers</label><select class="field" id="pax"></select></div>
+          </div>
+          <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-4">
+            <div class="min-w-0"><label class="lbl" for="name">Your name</label><input class="field" id="name" placeholder="Optional" autocomplete="name"></div>
+            <div class="min-w-0"><label class="lbl" for="flight">Flight number</label><input class="field" id="flight" placeholder="Optional, e.g. MS 777"></div>
+          </div>
+        </div>
+        <datalist id="places">
+          <option value="Cairo International Airport (CAI) Terminal 1"></option>
+          <option value="Cairo International Airport (CAI) Terminal 2"></option>
+          <option value="Cairo International Airport (CAI) Terminal 3"></option>
+          <option value="Sphinx International Airport (SPX)"></option>
+          <option value="Grand Egyptian Museum, Giza"></option>
+          <option value="Pyramids of Giza"></option>
+          <option value="Downtown Cairo hotel"></option>
+          <option value="Zamalek, Cairo"></option>
+          <option value="New Cairo"></option>
+          <option value="Alexandria"></option>
+          <option value="Luxor Airport (LXR)"></option>
+          <option value="Hurghada Airport (HRG)"></option>
+          <option value="Sharm El Sheikh Airport (SSH)"></option>
+        </datalist>
+        <p id="fitNote" class="mt-4 mb-0 text-sm text-navy-800 bg-mist rounded-lg px-3 py-2" hidden></p>
+        <div class="mt-5 flex items-baseline justify-between gap-3 flex-wrap">
+          <span class="text-sm text-[#46557A]">Starting from</span>
+          <span class="text-[#46557A] text-sm"><strong id="quote" class="font-display text-3xl text-navy-800 font-semibold">$25</strong> per transfer</span>
+        </div>
+        <p class="mt-1 mb-4 text-xs text-[#46557A]">Final fixed price is confirmed on WhatsApp before you pay anything.</p>
+        <p id="formError" class="mb-3 text-sm font-semibold text-[#A3281F]" role="alert" hidden></p>
+        <a id="bookBtn" href="#" target="_blank" rel="noopener" class="btn-wa w-full">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          Book via WhatsApp
+        </a>
+        <details class="mt-4 text-sm text-[#46557A]">
+          <summary class="cursor-pointer font-semibold text-navy-800">Preview your WhatsApp message</summary>
+          <pre id="preview" class="mt-2 mb-0 p-3 bg-mist rounded-lg whitespace-pre-wrap break-words text-[13px] text-navy-800" style="font-family:inherit"></pre>
+        </details>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="gutter bg-white text-navy-800 py-16 sm:py-24">
+  <div class="wrap">
+    <p class="text-gold-700 text-sm font-bold tracking-[.14em] uppercase m-0">Services</p>
+    <h2 class="font-display font-semibold mt-3 mb-10 text-navy-800" style="font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05">Three ways to travel with us</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="min-w-0 border border-[#D5DCEA] rounded-2xl p-6 flex flex-col">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        <h3 class="font-display text-2xl font-semibold mt-4 mb-2">Airport transfers</h3>
+        <p class="m-0 text-[#46557A]">Your driver waits in arrivals with a sign showing your name. We track your flight number, so a delay never leaves you stranded.</p>
+        <p class="mt-4 mb-0 text-sm text-navy-800"><strong>Airports:</strong> Cairo (CAI), Sphinx (SPX), Hurghada (HRG), Sharm El Sheikh (SSH), Luxor (LXR)</p>
+        <span class="mt-4 self-start text-xs font-bold tracking-wide uppercase bg-gold-400 text-navy-900 rounded-full px-3 py-1">Free flight tracking</span>
+        <a data-wa="an airport transfer" href="#" target="_blank" rel="noopener" class="mt-auto pt-6 font-semibold text-navy-800 underline underline-offset-4 decoration-gold-500">Ask about airport transfers</a>
+      </article>
+      <article class="min-w-0 border border-[#D5DCEA] rounded-2xl p-6 flex flex-col">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 20h18z"/><path d="M12 3v17"/></svg>
+        <h3 class="font-display text-2xl font-semibold mt-4 mb-2">Private day tours</h3>
+        <p class="m-0 text-[#46557A]">Your own car, your own pace. Stay as long as you like at each stop, with a driver who knows the quietest hours and the best photo spots.</p>
+        <p class="mt-4 mb-0 text-sm text-navy-800"><strong>Popular:</strong> Pyramids of Giza and Sphinx, Saqqara, Alexandria, Luxor West Bank</p>
+        <a data-wa="a private day tour" href="#" target="_blank" rel="noopener" class="mt-auto pt-6 font-semibold text-navy-800 underline underline-offset-4 decoration-gold-500">Plan a day tour</a>
+      </article>
+      <article class="min-w-0 border border-[#D5DCEA] rounded-2xl p-6 flex flex-col">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3 class="font-display text-2xl font-semibold mt-4 mb-2">Chauffeur by the hour or day</h3>
+        <p class="m-0 text-[#46557A]">Keep a car and driver for 4 hours, 8 hours or the whole day. Browse Khan el-Khalili, dine in Zamalek, shop in Cairo, and never look for parking.</p>
+        <p class="mt-4 mb-0 text-sm text-navy-800"><strong>Good for:</strong> shopping, business meetings, multi-stop days</p>
+        <a data-wa="a chauffeur by the hour or full day" href="#" target="_blank" rel="noopener" class="mt-auto pt-6 font-semibold text-navy-800 underline underline-offset-4 decoration-gold-500">Hire a chauffeur</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section id="fleet" class="gutter bg-navy-800 py-16 sm:py-24">
+  <div class="wrap">
+    <p class="text-gold-400 text-sm font-bold tracking-[.14em] uppercase m-0">Our fleet</p>
+    <h2 class="font-display font-semibold text-white mt-3 mb-3" style="font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05">Clean, modern, air-conditioned</h2>
+    <p class="text-[#B6C2DA] max-w-[60ch] mt-0 mb-10">A small private fleet, so every car is well kept and every driver is one we know. Prices start from the amounts below and are confirmed before you travel.</p>
+    <div id="fleetGrid" class="grid md:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="gutter bg-mist text-navy-800 py-16 sm:py-24">
+  <div class="wrap">
+    <p class="text-gold-700 text-sm font-bold tracking-[.14em] uppercase m-0">Why tourists trust us</p>
+    <h2 class="font-display font-semibold mt-3 mb-10 text-navy-800" style="font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05">No surprises, from landing to drop-off</h2>
+    <div class="grid sm:grid-cols-2 gap-x-10 gap-y-9">
+      <div class="flex gap-4 min-w-0">
+        <svg class="flex-none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3 class="font-display text-2xl font-semibold m-0">Fixed prices, no hidden fees</h3><p class="mt-1 mb-0 text-[#46557A]">The price we confirm on WhatsApp is the price you pay. Fuel, tolls and parking are included.</p></div>
+      </div>
+      <div class="flex gap-4 min-w-0">
+        <svg class="flex-none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+        <div><h3 class="font-display text-2xl font-semibold m-0">English-speaking professional drivers</h3><p class="mt-1 mb-0 text-[#46557A]">Courteous, licensed drivers who know the roads and can answer your questions about where you are going.</p></div>
+      </div>
+      <div class="flex gap-4 min-w-0">
+        <svg class="flex-none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+        <div><h3 class="font-display text-2xl font-semibold m-0">24/7 WhatsApp support</h3><p class="mt-1 mb-0 text-[#46557A]">Message us any hour, before or during your trip. You get your driver's name, photo and car plate before pickup.</p></div>
+      </div>
+      <div class="flex gap-4 min-w-0">
+        <svg class="flex-none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7A5F1C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><h3 class="font-display text-2xl font-semibold m-0">Free waiting time for delayed flights</h3><p class="mt-1 mb-0 text-[#46557A]">We follow your flight and adjust the pickup. A late arrival or a slow passport queue costs you nothing extra.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="gutter bg-white text-navy-800 py-16 sm:py-24">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10">
+      <div class="min-w-0">
+        <h2 class="font-display font-semibold m-0 text-navy-800" style="font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.08">Questions before you book</h2>
+        <p class="mt-3 text-[#46557A] max-w-[40ch]">Cannot find your answer? Send us a message and we will reply within minutes.</p>
+        <a data-wa="a question" href="#" target="_blank" rel="noopener" class="btn-wa mt-2">Ask on WhatsApp</a>
+      </div>
+      <div class="min-w-0 border-t border-[#D5DCEA]">
+        <!-- EDIT: update payment and cancellation answers to match your real policies. -->
+        <details class="faq" open><summary>How do I pay?</summary><p>You can pay your driver in cash (USD, EUR or EGP) at the end of the trip. If you prefer, we can send a card payment link or bank transfer details on request.</p></details>
+        <details class="faq"><summary>How will I find my driver at the airport?</summary><p>Your driver meets you in the arrivals hall holding a sign with your name. Before you land, we send you the driver's name, car plate and phone number on WhatsApp.</p></details>
+        <details class="faq"><summary>What happens if my flight is delayed?</summary><p>Add your flight number to the booking. We track it, move the pickup to your real landing time and include the waiting time at no charge.</p></details>
+        <details class="faq"><summary>Are the prices really fixed?</summary><p>Yes. We confirm one price in USD on WhatsApp before you travel. It includes fuel, tolls and parking, so nothing is added at the end.</p></details>
+        <details class="faq"><summary>Can you provide a child seat?</summary><p>Child seats are available on request. Mention the age of your child in your message and we will have the right seat in the car.</p></details>
+        <details class="faq"><summary>Can I cancel or change my booking?</summary><p>Message us on WhatsApp with your new plan. Changes and cancellations made at least 24 hours before pickup are free.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="gutter bg-navy-800 py-16 sm:py-20 text-center">
+  <div class="wrap">
+    <h2 class="font-display font-semibold text-white m-0" style="font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05">Tell us where you are going.</h2>
+    <p class="text-[#B6C2DA] mt-4 mb-7 mx-auto max-w-[48ch]">Send your pickup, drop-off and date. You get a fixed price and a confirmed driver, usually within minutes.</p>
+    <a data-wa="a booking" href="#" target="_blank" rel="noopener" class="btn-wa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+      Message us on WhatsApp
+    </a>
+    <p class="mt-4 mb-0 text-[#B6C2DA] text-sm">WhatsApp: <span id="phoneText" class="text-white font-semibold select-all">+20 100 000 0000</span></p>
+  </div>
+</section>
+</main>
+
+<footer class="gutter bg-navy-950 py-10">
+  <div class="wrap flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-[#B6C2DA]">
+    <span class="font-display text-xl text-white" data-company>Nile Horizon Transfers</span>
+    <span>Cairo · Giza · Luxor · Hurghada · Sharm El Sheikh</span>
+    <span>© 2026 <span data-company>Nile Horizon Transfers</span></span>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a data-wa="General inquiry" href="#" target="_blank" rel="noopener" class="btn-wa wa-float" aria-label="Chat on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+  <span>Chat</span>
+</a>
+
+<script>
+/* ============ EDIT YOUR DETAILS HERE ============ */
+const CONFIG = {
+  company: "Nile Horizon Transfers",
+  whatsapp: "201154757724",          // country code + number, digits only (no + or spaces)
+  phoneDisplay: "+20 115 475 7724",
+  currency: "$",
+  vehicles: [
+    { id: "sedan", name: "Comfort Sedan", model: "Toyota Corolla or similar", min: 1, max: 3, bags: "2 large + 2 cabin bags", price: 25, photo: "" },
+    { id: "suv",   name: "Premium SUV",   model: "Hyundai Tucson or similar", min: 1, max: 4, bags: "3 large + 2 cabin bags", price: 35, photo: "" },
+    { id: "van",   name: "Family Van",    model: "Toyota HiAce or similar",   min: 5, max: 10, bags: "Up to 8 large bags",   price: 45, photo: "" }
+  ]
+  // photo: paste an image URL or data: URI to replace the drawing on a fleet card
+};
+/* ================================================== */
+
+const $ = (id) => document.getElementById(id);
+const V = CONFIG.vehicles;
+const waLink = (text) => "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const ART = {
+  sedan: '<svg viewBox="0 0 240 100" role="img" aria-label="Sedan" class="w-full h-auto"><path d="M62 52 L84 28 Q88 24 96 24 L146 24 Q154 24 160 29 L184 52Z" fill="#1B3566"/><path d="M72 50 L89 32 L118 32 L118 50Z" fill="#9FB3D6"/><path d="M124 50 L124 32 L146 32 Q150 32 153 35 L168 50Z" fill="#9FB3D6"/><rect x="14" y="50" width="212" height="28" rx="9" fill="#1B3566"/><rect x="14" y="62" width="212" height="3" fill="#C9A24A"/><circle cx="60" cy="78" r="15" fill="#07122A"/><circle cx="60" cy="78" r="6" fill="#C9A24A"/><circle cx="180" cy="78" r="15" fill="#07122A"/><circle cx="180" cy="78" r="6" fill="#C9A24A"/></svg>',
+  suv: '<svg viewBox="0 0 240 100" role="img" aria-label="SUV" class="w-full h-auto"><path d="M44 46 L62 20 Q66 16 74 16 L168 16 Q176 16 182 22 L206 46Z" fill="#1B3566"/><path d="M56 44 L70 24 L112 24 L112 44Z" fill="#9FB3D6"/><path d="M118 44 L118 24 L162 24 Q166 24 169 27 L190 44Z" fill="#9FB3D6"/><rect x="12" y="44" width="216" height="34" rx="9" fill="#1B3566"/><rect x="12" y="60" width="216" height="3" fill="#C9A24A"/><circle cx="58" cy="78" r="16" fill="#07122A"/><circle cx="58" cy="78" r="6.5" fill="#C9A24A"/><circle cx="182" cy="78" r="16" fill="#07122A"/><circle cx="182" cy="78" r="6.5" fill="#C9A24A"/></svg>',
+  van: '<svg viewBox="0 0 240 100" role="img" aria-label="Family van" class="w-full h-auto"><path d="M12 28 Q12 16 24 16 L176 16 Q184 16 190 22 L224 54 Q228 58 228 64 L228 78 L12 78Z" fill="#1B3566"/><rect x="26" y="28" width="36" height="22" rx="3" fill="#9FB3D6"/><rect x="70" y="28" width="36" height="22" rx="3" fill="#9FB3D6"/><rect x="114" y="28" width="36" height="22" rx="3" fill="#9FB3D6"/><path d="M158 28 L180 28 L204 52 L158 52Z" fill="#9FB3D6"/><rect x="12" y="62" width="216" height="3" fill="#C9A24A"/><circle cx="62" cy="78" r="16" fill="#07122A"/><circle cx="62" cy="78" r="6.5" fill="#C9A24A"/><circle cx="184" cy="78" r="16" fill="#07122A"/><circle cx="184" cy="78" r="6.5" fill="#C9A24A"/></svg>'
+};
+
+/* Company name and contact */
+document.title = CONFIG.company;
+document.querySelectorAll("[data-company]").forEach((el) => { el.textContent = CONFIG.company; });
+$("phoneText").textContent = CONFIG.phoneDisplay;
+document.querySelectorAll("[data-wa]").forEach((a) => {
+  const topic = a.getAttribute("data-wa");
+  const text = topic === "General inquiry"
+    ? "Hello " + CONFIG.company + "! I have a question about your transfers."
+    : "Hello " + CONFIG.company + "! I'm interested in " + topic + ".";
+  a.href = waLink(text);
+});
+
+/* Fleet cards */
+$("fleetGrid").innerHTML = V.map((v) => {
+  const art = v.photo ? '<img src="' + esc(v.photo) + '" alt="' + esc(v.name) + '" class="w-full h-auto rounded-lg">' : ART[v.id];
+  const pax = v.min === v.max ? v.max : v.min + "–" + v.max;
+  return '<article class="min-w-0 bg-white text-navy-800 rounded-2xl p-6 flex flex-col">' +
+    '<div class="bg-mist rounded-xl px-4 py-5">' + art + '</div>' +
+    '<h3 class="font-display text-2xl font-semibold mt-5 mb-0">' + esc(v.name) + '</h3>' +
+    '<p class="m-0 text-sm text-[#46557A]">' + esc(v.model) + '</p>' +
+    '<p class="mt-3 mb-0 font-semibold">' + pax + ' passengers</p>' +
+    '<p class="mt-1 mb-0 text-sm text-[#46557A]">' + esc(v.bags) + '</p>' +
+    '<ul class="mt-4 mb-0 p-0 list-none flex flex-wrap gap-2 text-xs font-semibold">' +
+      '<li class="bg-mist rounded-full px-3 py-1">Air conditioning</li><li class="bg-mist rounded-full px-3 py-1">Free Wi-Fi</li><li class="bg-mist rounded-full px-3 py-1">Bottled water</li></ul>' +
+    '<div class="mt-auto pt-6 flex items-end justify-between gap-3">' +
+      '<div><div class="text-xs text-[#46557A] uppercase tracking-wide font-bold">Starting from</div>' +
+      '<div class="font-display text-4xl font-semibold leading-none">' + CONFIG.currency + v.price + '</div></div>' +
+      '<a href="#book" data-pick="' + v.id + '" class="font-semibold text-navy-800 underline underline-offset-4 decoration-gold-500">Get a quote</a></div>' +
+    '</article>';
+}).join("");
+
+/* Booking form */
+$("vehicle").innerHTML = V.map((v) => '<option value="' + v.id + '">' + esc(v.name) + " (up to " + v.max + ")</option>").join("");
+$("pax").innerHTML = Array.from({ length: 10 }, (_, i) => '<option value="' + (i + 1) + '">' + (i + 1) + (i === 0 ? " passenger" : " passengers") + "</option>").join("");
+$("pax").value = "2";
+(function setMinDate() {
+  const t = new Date();
+  $("date").min = t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+})();
+document.querySelectorAll("[data-pick]").forEach((a) => a.addEventListener("click", () => { $("vehicle").value = a.getAttribute("data-pick"); refresh(); }));
+
+const byId = (id) => V.find((v) => v.id === id);
+function fitVehicle() {
+  const n = +$("pax").value;
+  const cur = byId($("vehicle").value);
+  const note = $("fitNote");
+  if (n > cur.max) {
+    const better = V.find((v) => v.max >= n);
+    $("vehicle").value = better.id;
+    note.textContent = "A " + cur.name + " seats up to " + cur.max + ". We selected the " + better.name + " for your group of " + n + ".";
+    note.hidden = false;
+  } else { note.hidden = true; }
+}
+function fmtDate(v) {
+  if (!v) return "";
+  const [y, m, d] = v.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+}
+function buildMessage() {
+  const v = byId($("vehicle").value);
+  const rows = [
+    ["Pickup", $("pickup").value.trim()],
+    ["Drop-off", $("dropoff").value.trim()],
+    ["Date", fmtDate($("date").value)],
+    ["Time", $("time").value],
+    ["Vehicle", v.name + " (up to " + v.max + " passengers)"],
+    ["Passengers", $("pax").value],
+    ["Flight no.", $("flight").value.trim()],
+    ["Name", $("name").value.trim()]
+  ].filter((r) => r[1]);
+  return "Hello " + CONFIG.company + "! I'd like to book a private transfer.\n\n" +
+    rows.map((r) => "*" + r[0] + ":* " + r[1]).join("\n") +
+    "\n\nPlease confirm the fixed price and availability. Thank you!";
+}
+function refresh() {
+  fitVehicle();
+  const v = byId($("vehicle").value);
+  $("quote").textContent = CONFIG.currency + v.price;
+  const msg = buildMessage();
+  $("preview").textContent = msg;
+  $("bookBtn").href = waLink(msg);
+}
+function validate() {
+  const missing = [["pickup", "pickup location"], ["dropoff", "drop-off location"], ["date", "date"]].filter((f) => !$(f[0]).value.trim());
+  const err = $("formError");
+  if (missing.length) {
+    err.textContent = "Please add your " + missing.map((m) => m[1]).join(", ") + " so we can quote you.";
+    err.hidden = false;
+    $(missing[0][0]).focus();
+    return false;
+  }
+  err.hidden = true;
+  return true;
+}
+["pickup", "dropoff", "date", "time", "vehicle", "pax", "name", "flight"].forEach((id) => {
+  $(id).addEventListener("input", refresh);
+  $(id).addEventListener("change", refresh);
+});
+$("bookBtn").addEventListener("click", (e) => { refresh(); if (!validate()) e.preventDefault(); });
+$("bookingForm").addEventListener("submit", (e) => { e.preventDefault(); $("bookBtn").click(); });
+$("bookingForm").id = "bookingForm";
+refresh();
+</script>
+
+</html>
